@@ -33,16 +33,16 @@ const List = () => {
           style={{display: !ismove && 'none'}}
         />
         <div className="container" ref={listref}>
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
-          <Listiteam />
+          <Listiteam index={0} />
+          <Listiteam index={1}/>
+          <Listiteam index={2}/>
+          <Listiteam index={3}/>
+          <Listiteam index={4}/>
+          <Listiteam index={5}/>
+          <Listiteam index={6}/>
+          <Listiteam index={7}/>
+          <Listiteam index={8}/>
+          <Listiteam index={9}/>
           
         </div>
         <ArrowForwardIosOutlinedIcon

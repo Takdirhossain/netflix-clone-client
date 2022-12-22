@@ -30,7 +30,7 @@ const Fetured = ({type}) => {
         )}
       <img
         width="100%"
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        src="https://assets.nflxext.com/ffe/siteui/vlv3/d0a0affb-1c76-4cf0-9d75-eb531f32458c/f50d36f6-4e0f-491c-9b60-3a289f610e2f/BD-en-20221214-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         alt=""
       />
       <div className="info">
