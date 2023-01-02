@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -19,9 +20,9 @@ const Nav = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <span>Home</span>
-          <span>Series</span>
-          <span>Movie</span>
+          <Link to="/" className="link"><span>Home</span></Link>
+         <Link to="/series" className="link"> <span>Series</span></Link>
+          <Link to="/movie" className="link"><span>Movie</span></Link>
           <span>New And Popular</span>
           <span>My List</span>
         </div>
