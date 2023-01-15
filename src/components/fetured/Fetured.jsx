@@ -1,14 +1,34 @@
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import './fetured.scss'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Fetured = ({type}) => {
+  const [content, setContent] = useState([])
+  useEffect(() => {
+const getRandomContent = async() => {
+  try{
+const res = await axios.get(`http://localhost:5000/api/movies/random?type=${type}`, {
+  headers: {
+    token:
+      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzIwMzE4NSwiZXhwIjoxNjczNjM1MTg1fQ.vi7iGzyz5LzqtYgiz4QAQKis1tog_ruQPSOx2W8y3no",
+  },
+})
+setContent(res.data[0])
+  }catch(err){
+    console.log(err)
+  }
+}
+getRandomContent()
+  }, [type])
+  console.log(content)
   return (
     <div className="featured">
         {type && (
             <div className="category">
                 <span>
-                {type === "Movie"? "Movie" : "Series"}
+                {type === "movie"? "movie" : "series"}
                 </span>
                 <select name="genre" id="genre">
             <option>Genre</option>
@@ -30,19 +50,17 @@ const Fetured = ({type}) => {
         )}
       <img
         width="100%"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/d0a0affb-1c76-4cf0-9d75-eb531f32458c/f50d36f6-4e0f-491c-9b60-3a289f610e2f/BD-en-20221214-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+        src={content.img}
         alt=""
       />
       <div className="info">
         <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
+          src={content.imgsm}
           alt=""
         />
         <span className="des">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem saepe
-          dolores dignissimos nihil praesentium perferendis, dolorum unde, autem
-          omnis consequatur quae reiciendis dicta suscipit eius! Alias ut
-          tenetur et distinctio. <br />
+         {content.des}
+         <br />
         </span>
         <div className="buttons">
           <button className="play">

@@ -3,13 +3,33 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Listiteam = ({ index }) => {
+const Listiteam = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const trailer =
-    "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  const [movie, setMovie] = useState({});
+
+useEffect(() => {
+  const movieLists = async() => {
+    try{
+const res = await axios.get("http://localhost:5000/api/movies/find/" + item,  {
+  headers: {
+    token:
+      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzIwMzE4NSwiZXhwIjoxNjczNjM1MTg1fQ.vi7iGzyz5LzqtYgiz4QAQKis1tog_ruQPSOx2W8y3no",
+  },
+})
+
+setMovie(res.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+  movieLists()
+}, [item])
   return (
+    <Link to="/watch" state={{from: movie}}>
     <div
       className="listiteam"
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
@@ -17,13 +37,13 @@ const Listiteam = ({ index }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
+        src={movie.imgsm}
         alt=""
       />
 
       {isHovered && (
         <>
-          <video src={trailer} autoPlay loop />
+          <video src={movie.trailer} autoPlay loop />
           <div className="itemInfo">
             <div className="icons">
               <PlayArrowIcon className="icon"/>
@@ -34,17 +54,17 @@ const Listiteam = ({ index }) => {
             <div className="itemInfoTop">
               <span>1 hour 14 mins</span>
               <span className="limit">+16</span>
-              <span>1999</span>
+              <span>{movie.year}</span>
             </div>
             <div className="desc">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Praesentium hic rem eveniet error possimus, neque ex doloribus.
+             {movie.des}
             </div>
-            <div className="genre">Action</div>
+            <div className="genre">{movie.genre}</div>
           </div>
         </>
       )}
     </div>
+    </Link>
   );
 };
 

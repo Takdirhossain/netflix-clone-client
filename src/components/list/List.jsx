@@ -4,12 +4,12 @@ import { useRef, useState } from "react";
 import Listiteam from "../listiteam/Listiteam";
 import "./list.scss";
 
-const List = () => {
+const List = ({list}) => {
   const [ismove, setIsmove] = useState(false)
   const [slide, setSlide] = useState(0)
   const listref = useRef();
 
-  const handaleClick = (direction) => {
+  const handleClick = (direction) => {
     setIsmove(true)
     let distance = listref.current.getBoundingClientRect().x - 50
    
@@ -25,32 +25,24 @@ const List = () => {
   };
   return (
     <div className="list">
-      <span className="contine">Continue To Watch</span>
-      <div className="wraper">
-        <ArrowBackIosNewOutlinedIcon
-          className="slider left"
-          onClick={() => handaleClick("left")}
-          style={{display: !ismove && 'none'}}
-        />
-        <div className="container" ref={listref}>
-          <Listiteam index={0} />
-          <Listiteam index={1}/>
-          <Listiteam index={2}/>
-          <Listiteam index={3}/>
-          <Listiteam index={4}/>
-          <Listiteam index={5}/>
-          <Listiteam index={6}/>
-          <Listiteam index={7}/>
-          <Listiteam index={8}/>
-          <Listiteam index={9}/>
-          
-        </div>
-        <ArrowForwardIosOutlinedIcon
-          onClick={() => handaleClick("right")}
-          className="slider right"
-        />
+    <span className="listTitle">{list.title}</span>
+    <div className="wrapper">
+      <ArrowBackIosNewOutlinedIcon
+        className="sliderArrow left"
+        onClick={() => handleClick("left")}
+        style={{ display: !ismove && "none" }}
+      />
+      <div className="container" ref={listref}>
+        {list.content.map((item, i) => (
+          <Listiteam index={i} item={item} />
+        ))}
       </div>
+      <ArrowForwardIosOutlinedIcon
+        className="sliderArrow right"
+        onClick={() => handleClick("right")}
+      />
     </div>
+  </div>
   );
 };
 

@@ -1,8 +1,10 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link } from "react-router-dom";
-import video from "../../assets/backgreound.mp4";
+import { Link, useLocation } from "react-router-dom";
+
 import "./watch.scss";
 const Watch = () => {
+ const data = useLocation()
+const {from} = data.state
   return (
     <div className="watch">
      <Link to="/"> <div className="back">
@@ -10,7 +12,7 @@ const Watch = () => {
         Home
       </div></Link>
       <div >
-        <video className="video" autoPlay progress controls src={video} />
+        <video className="video" autoPlay progress controls src={from.video} />
       </div>
     </div>
   );

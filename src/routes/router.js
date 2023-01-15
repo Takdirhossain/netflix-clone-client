@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from "react-router-dom";
+import { createBrowserRouter,  } from "react-router-dom";
 import Home from "../Pages/home/Home";
 import Login from "../Pages/login/Login";
 import Register from "../Pages/register/Register";
@@ -9,8 +9,8 @@ const router = createBrowserRouter([
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> },
 
-  { path: "/movie", element: <Home type="Movie" /> },
-  { path: "/series", element: <Home type="Series" /> },
+  { path: "/movie", element: <Home type="movie" /> },
+  { path: "/series", element: <Home type="series" /> },
   { path: "/watch", element: <Watch /> },
 ]);
 export default router;
