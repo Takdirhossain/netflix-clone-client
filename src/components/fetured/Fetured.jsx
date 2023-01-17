@@ -12,7 +12,7 @@ const getRandomContent = async() => {
 const res = await axios.get(`http://localhost:5000/api/movies/random?type=${type}`, {
   headers: {
     token:
-      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzIwMzE4NSwiZXhwIjoxNjczNjM1MTg1fQ.vi7iGzyz5LzqtYgiz4QAQKis1tog_ruQPSOx2W8y3no",
+      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzcyNTQ4MSwiZXhwIjoxNjc0MTU3NDgxfQ.kgudZMDluBdxjFYDY_5HXE8GmXS0gsO6aOmNsiOtw2A",
   },
 })
 setContent(res.data[0])
@@ -55,7 +55,7 @@ getRandomContent()
       />
       <div className="info">
         <img
-          src={content.imgsm}
+          src="/"
           alt=""
         />
         <span className="des">

@@ -17,7 +17,7 @@ useEffect(() => {
 const res = await axios.get("http://localhost:5000/api/movies/find/" + item,  {
   headers: {
     token:
-      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzIwMzE4NSwiZXhwIjoxNjczNjM1MTg1fQ.vi7iGzyz5LzqtYgiz4QAQKis1tog_ruQPSOx2W8y3no",
+      "Bearar eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYThjNTZkODIzYjQ3MDM2ZjQzNzg5YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MzcyNTQ4MSwiZXhwIjoxNjc0MTU3NDgxfQ.kgudZMDluBdxjFYDY_5HXE8GmXS0gsO6aOmNsiOtw2A",
   },
 })
 
@@ -37,13 +37,13 @@ setMovie(res.data)
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src={movie.imgsm}
+        src=""
         alt=""
       />
 
       {isHovered && (
         <>
-          <video src={movie.trailer} autoPlay loop />
+          <video src={movie?.trailer} autoPlay loop />
           <div className="itemInfo">
             <div className="icons">
               <PlayArrowIcon className="icon"/>
@@ -54,12 +54,12 @@ setMovie(res.data)
             <div className="itemInfoTop">
               <span>1 hour 14 mins</span>
               <span className="limit">+16</span>
-              <span>{movie.year}</span>
+              <span>{movie?.year}</span>
             </div>
             <div className="desc">
-             {movie.des}
+             {movie?.des}
             </div>
-            <div className="genre">{movie.genre}</div>
+            <div className="genre">{movie?.genre}</div>
           </div>
         </>
       )}
