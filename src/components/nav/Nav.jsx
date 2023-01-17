@@ -20,9 +20,9 @@ const Nav = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <Link to="/" className="link"><span>Home</span></Link>
-         <Link to="/series" className="link"> <span>Series</span></Link>
-          <Link to="/movie" className="link"><span>Movie</span></Link>
+          <Link to="/" ><span className=" fixediteam">Home</span></Link>
+         <Link to="/series" > <span className=" fixediteam">Series</span></Link>
+          <Link to="/movie" ><span className=" fixediteam">Movie</span></Link>
           <span>New And Popular</span>
           <span>My List</span>
         </div>

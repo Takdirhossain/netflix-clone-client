@@ -33,7 +33,7 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <Nav></Nav>
-      <Fetured type={type} />
+      <Fetured type={type} setGenre={setGenre} />
       {list?.map((list, i) => (
         <List key={i} list={list} />
       ))}
